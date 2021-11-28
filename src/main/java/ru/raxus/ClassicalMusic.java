@@ -2,24 +2,20 @@ package ru.raxus;
 
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class ClassicalMusic implements Music{
-
-    private ClassicalMusic() {
-    }
-
-    public static ClassicalMusic getClassicalMusic(){
-        return new ClassicalMusic();
+    private List<String> songs = new ArrayList<>();
+    {
+        songs.add("Attack of the Deadmen");
+        songs.add("Radio Gaga");
+        songs.add("I was made for lovin' you babe");
     }
 
     @Override
-    public String getSong() {
-        return "Four Seasons";
-    }
-    public void doInit(){
-        System.out.println("Инициализирую метод");
-    }
-    public void doDestroy(){
-        System.out.println("Уничтожаю метод");
+    public List<String> getSongs() {
+        return songs;
     }
 }
