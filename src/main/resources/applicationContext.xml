@@ -16,14 +16,20 @@
     property - Тег для создания объекта класса через сеттер (внедрение значения + имя бина, в объект которого внедряем значение)
     name-value передаем ключ(имя переменной) и значение
     context:property-placeholder - файл с пропертями, где location - это путь к файлу
-    <ref bean - ссылка на бин, объект класса которого передается в элемент массива, если на вход нужно подать массив-->
+    <ref bean - ссылка на бин, объект класса которого передается в элемент массива, если на вход нужно подать массив
+    context:component-scan - сам сканирует классы, помеченные аннотацией @Component, чтобы не заморачиваться с ручным созданием бинов-->
 
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
+    <context:component-scan base-package="ru.raxus"/>
 
-    <bean id="rockMusicBean" class="ru.raxus.RockMusic">
+<!--    <bean id="rockMusicBean" class="ru.raxus.RockMusic">
     </bean>
 
-    <bean id="classicalMusicBean" class="ru.raxus.ClassicalMusic">
+    <bean id="classicalMusicBean"
+          class="ru.raxus.ClassicalMusic"
+          init-method="doInit"
+          destroy-method="doDestroy"
+          factory-method="getClassicalMusic">
     </bean>
 
     <bean id="popMusicBean" class="ru.raxus.PopMusic">
@@ -32,7 +38,7 @@
     <bean id="musicPlayer"
           class="ru.raxus.MusicPlayer"
           scope="prototype">
-        <!--на вход передается коллекция через сеттер-->
+        &lt;!&ndash;на вход передается коллекция через сеттер&ndash;&gt;
         <property name="musicList">
             <list>
                 <ref bean="rockMusicBean"/>
@@ -40,9 +46,9 @@
                 <ref bean="popMusicBean"/>
             </list>
         </property>
-<!--на вход подаются переменные через сеттеры-->
+        &lt;!&ndash;на вход подаются переменные через сеттеры&ndash;&gt;
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
-    </bean>
+    </bean>-->
 
 </beans>
