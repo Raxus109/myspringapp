@@ -30,7 +30,9 @@
     </bean>
 
     <bean id="musicPlayer"
-          class="ru.raxus.MusicPlayer">
+          class="ru.raxus.MusicPlayer"
+          scope="prototype">
+        <!--на вход передается коллекция через сеттер-->
         <property name="musicList">
             <list>
                 <ref bean="rockMusicBean"/>
@@ -38,7 +40,7 @@
                 <ref bean="popMusicBean"/>
             </list>
         </property>
-
+<!--на вход подаются переменные через сеттеры-->
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
