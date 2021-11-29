@@ -2,6 +2,7 @@ package ru.raxus;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -13,6 +14,10 @@ public class MusicPlayer {
     private ClassicalMusic classicalMusic;
     private RockMusic rockMusic;
     private PopMusic popMusic;
+    @Value("${musicPlayer.name}")
+    private String name;
+    @Value("${musicPlayer.volume}")
+    private int volume;
 
     //Инверсия управления
     @Autowired
@@ -21,6 +26,7 @@ public class MusicPlayer {
         this.rockMusic = rockMusic;
         this.popMusic = popMusic;
     }
+
     public void playMusic(MusicGenre genre){
         Random random = new Random();
         int randomInteger = random.nextInt(3);
@@ -33,5 +39,13 @@ public class MusicPlayer {
         if (genre.equals(MusicGenre.POP)){
             System.out.println("Поп: " + popMusic.getSongs().get(randomInteger));
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getVolume() {
+        return volume;
     }
 }
