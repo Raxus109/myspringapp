@@ -41,6 +41,10 @@ public class MusicPlayer {
         }
     }
 
+    public String playMusic(){
+        return "Играю ";
+    }
+
     public String getName() {
         return name;
     }
